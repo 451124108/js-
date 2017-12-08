@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>贪吃蛇</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .box{
+
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000000;
+        margin: 10px auto;
+    }
+    .box div{
+        width: 28px;
+        height: 28px;
+
+        border: 1px solid #000000;
+        float: left;
+    }
+    .she{
+        background: red;
+    }
+    .food{
+        background: blue;
+    }
+    ul{
+        width: 600px;
+        height: 50px;
+        margin: 0 auto;
+    }
+    ul li{
+        width: 150px;
+        height: 50px;
+        float: left;
+        font-size: 30px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 20px;
+        margin: 0 10px;
+    }
+    .aa{
+        background: blueviolet;
+    }
+    .bb{
+        background: yellowgreen;
+    }
+    .cc{
+        background: orangered;
+    }
+</style>
+<body>
+<ul>
+    <li class="aa">AAA</li>
+    <li class="bb">BBB</li>
+    <li class="cc">CCC</li>
+</ul>
+    <div class="box">
+
+    </div>
+</body>
+</html>
+<script>
+//    构建游戏场景
+    let box=document.querySelector('.box')
+    let str=''
+    for(let i=0;i<20;i++){
+        for(let j=0;j<20;j++){
+            str+=`<div id="c${j}-${i}"></div>`
+        }
+    }
+    box.innerHTML=str
+
+    let she=[
+        {x:0,y:0},
+        {x:1,y:0},
+        {x:2,y:0}
+    ];
+
+//画蛇
+     she.forEach(val=>{
+         var dom=document.querySelector(`#c${val.x}-${val.y}`)
+         dom.classList.add('she')
+     })
+
+//食物
+     let food=getfood()
+     function getfood() {
+         do{
+             var x=Math.floor(Math.random()*20)
+             var y=Math.floor(Math.random()*20)
+         }while (check(x,y))
+        let fooddom=document.querySelector(`#c${x}-${y}`)
+         fooddom.classList.add('food')
+         return {x,y}
+     }
+     function check(a,b) {
+         return she.some(val=>val.x==a&&val.y==b)
+     }
+
+//跑
+     let way='right';
+
+
+     function move() {
+         let headCoords=she[she.length-1];
+         let newHead
+         switch (way){
+             case 'right':
+                 newHead={x:headCoords.x+1,y:headCoords.y};
+                 break;
+             case 'left':
+                 newHead={x:headCoords.x-1,y:headCoords.y};
+                 break;
+             case 'top':
+                 newHead={x:headCoords.x,y:headCoords.y-1};
+                 break;
+             case 'bottom':
+                 newHead={x:headCoords.x,y:headCoords.y+1};
+                 break;
+         }
+
+         let newheaddom=document.querySelector(`#c${newHead.x}-${newHead.y}`);
+//         console.log(newheaddom)
+         if(!newheaddom||check(newHead.x,newHead.y)){
+             clearInterval(t);
+             alert('想不开别撞墙呀!')
+             return
+         }
+         newheaddom.className='she'
+         she.push(newHead)
+         if(newHead.x==food.x&&newHead.y==food.y){
+            food=getfood();
+         }
+         else{
+             let end=she.shift()
+             let enddom=document.querySelector(`#c${end.x}-${end.y}`)
+             enddom.classList.remove('she')
+         }
+
+     }
+     let t=setInterval(move,100)
+//控制
+
+document.onkeydown=function (e) {
+    let code=e.which
+    switch(code){
+        case 37:
+            if(way=='right'){
+                return
+            }
+            way='left';
+            break;
+        case 38:
+            if(way=='bottom'){
+                return
+            }
+            way='top';
+            break;
+        case 39:
+            if(way=='left'){
+                return
+            }
+            way='right';
+            break;
+        case 40:
+            if(way=='top'){
+                return
+            }
+            way='bottom';
+            break;
+
+    }
+}
+
+
+
+
+    //构建游戏元素
+
+
+    //画蛇
+
+    //食物
+
+    //跑
+
+    //控制方向
+</script>

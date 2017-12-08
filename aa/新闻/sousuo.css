@@ -1,0 +1,148 @@
+*{
+    padding: 0;
+    margin:0;
+    list-style: none;
+    font-size: 16px;
+}
+a{
+    text-decoration: none;
+}
+.search{
+    width:100%;
+    height:0.5rem;
+    background: blueviolet;
+    overflow: hidden;
+    position: relative;
+    left: 0rem;
+    top: 0rem;
+}
+.back{
+    width: .4rem;
+    height: 100%;
+    color: white;
+    font-size: 0.3rem;
+    font-family: '宋体';
+    text-align: center;
+    line-height: -0.5rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.color{
+    color:#d33682;
+}
+.search>input{
+    width:80%;
+    display: block;
+    margin:.1rem auto;
+    height:0.3rem;
+    border: none;
+    outline: none;
+    border-radius: .05rem;
+    box-sizing: border-box;
+    padding-left:1em;
+}
+.content{
+    width:100%;
+    height:auto;
+}
+.content .list{
+    width:95%;
+    margin: 0 auto;
+    height:auto;
+    border-bottom:1px solid #ccc;
+    padding:0.1rem 0;
+    display: flex;
+    justify-content:space-between;
+}
+.content .list a{
+    display: flex;
+    justify-content:space-between;
+}
+.content .nopic a{
+    display:block;
+}
+.left{
+    width:40%;
+    height:auto;
+    overflow: hidden;
+}
+.con{
+    width:56%;
+    box-sizing: border-box;
+    height:1rem;
+    overflow: hidden;
+    font-size:16px;
+    color: #000000;
+
+}
+.title{
+    width:3.55rem;
+    margin:0 auto;
+    font-size:20px;
+    color: #000;
+    height: 0.5rem;
+    overflow: hidden;
+    line-height: 0.5rem;
+}
+.nr{
+    width:3.55rem;
+    font-size:14px;
+    color:#666666;
+    box-sizing: border-box;
+    height:0.4rem;
+    overflow: hidden;
+    margin: 0 auto;
+    /*line-height:0.7rem;*/
+    text-overflow: ellipsis;
+}
+.time{
+    width:100%;
+    height:auto;
+    margin-top:0.1rem;
+    font-size:15px;
+    color: #666666;
+}
+.left img{
+    width:100%;
+}
+.nopic{
+    padding-top:0.1rem;
+    border-bottom:1px solid #ccc;
+}
+
+.history{
+    width: 100%;
+    height: 2.25rem;
+    position: relative;
+    text-align: center;
+}
+.history span{
+    display: inline-block;
+    margin: 0.15rem 0.2rem 0;
+
+}
+.historytext{
+    display: block;
+    background: #f5f5f5;
+    color: #363636;
+    font-size: 20px;
+    padding: 5px;
+}
+.zhao{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 999;
+    background: #fff;
+    display: none;
+}
+.zhao img{
+    width: 100%;
+    position: absolute;
+    top: -400px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}

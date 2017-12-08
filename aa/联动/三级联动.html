@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三级联动</title>
+    <script src="../jquery-3.2.1.js"></script>
+</head>
+<body>
+<select name="" id="province">
+    <option value="">请选择省份</option>
+</select>
+<select name="" id="city">
+    <option value="">请选择城市</option>
+</select>
+<select name="" id="town">
+    <option value="">请选择区县</option>
+</select>
+</body>
+</html>
+<script>
+    $.ajax({
+        url:'http://api.jisuapi.com/area/province?appkey=a52cd4c401a49c1c',
+        dataType:"jsonp",
+        success:function (obj) {
+            var arr=obj.result;
+            console.log(arr)
+            var str='';
+            if(value=""){
+                return
+            }
+            arr.forEach(val=>{
+                str+=`<option value="${val.id}">${val.name}</option>`
+            })
+            $("#province").html(function (index,html) {
+                return html+str
+            })
+        }
+    });
+    $("#province").change(function () {
+        $("#city").html('<option value="">请选择城市</option>')
+        $("#town").html('<option value="">请选择区县</option>');
+        let province=$(this).val();
+        if(!province){
+            return
+        }
+        $.ajax({
+            url:' http://api.jisuapi.com/area/city?parentid='+province+'&appkey=a52cd4c401a49c1c',
+            dataType:"jsonp",
+            success:function (obj) {
+                var arr=obj.result;
+                console.log(obj,arr)
+                var str="";
+                arr.forEach(val=>{
+                    str+=`<option value="${val.id}">${val.name}</option>`;
+            })
+                $("#city").html(function (index,html) {
+                    return html+str
+                })
+            }
+        })
+    });
+    $("#city").change(function () {
+        $("#town").html('<option value="">请选择城市</option>');
+        let city=$(this).val();
+        if(!city){
+            return
+        }
+        $.ajax({
+            url:'http://api.jisuapi.com/area/town?parentid='+city+'&appkey=a52cd4c401a49c1c',
+            dataType:"jsonp",
+            success:function (obj) {
+                var arr=obj.result;
+                var str='';
+
+                arr.forEach(val=>{
+                    str+=`<option value="${val.id}">${val.name}</option>`;
+            })
+                $("#town").html(function (index,html) {
+                    return html+str
+                })
+            }
+        })
+    })
+</script>
