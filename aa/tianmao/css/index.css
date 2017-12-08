@@ -1708,7 +1708,7 @@ a {
 .pdbox {
     width: 234px;
     height: 370px;
-    background: #999;
+    background: #ffffff;
     margin-right: 13px;
     float: left;
     position: relative;
@@ -2660,7 +2660,7 @@ main {
     height: 301px;
     margin-left: 13px;
     margin-bottom: 15px;
-    background: red;
+    background: #ffffff;
     float: left;
     position: relative;
 }
@@ -2968,7 +2968,7 @@ main {
 .footerbox2 {
     width: 297px;
     height: 100px;
-    background: yellow;
+    background: #ffffff;
     float: left;
 }
 
