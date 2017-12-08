@@ -1959,14 +1959,14 @@ a {
 .tubiaodabox {
     width: auto;
     height: 327px;
-    background: pink;
+    background: #ffffff;
 
 }
 
 .tubiaodabox li {
     width: 122px;
     height: 108px;
-    background: black;
+    background: #ffffff;
     float: left;
     border-right: 1px solid #F5F5F5;
     border-bottom: 1px solid #F5F5F5;
